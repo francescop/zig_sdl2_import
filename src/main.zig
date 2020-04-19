@@ -15,13 +15,13 @@ const SCREEN_HEIGHT = 480;
 
 pub fn main() u8 {
     if (sdl.SDL_Init(sdl.SDL_INIT_VIDEO) != 0) {
-        warn("error initializing SDL: {}\n", sdl.SDL_GetError());
+        warn("error initializing SDL: {}\n", .{sdl.SDL_GetError()});
         return 1;
     }
 
-    var window = sdl.SDL_CreateWindow(c"hello_sdl2", 1, 1, SCREEN_WIDTH, SCREEN_HEIGHT, sdl.SDL_WINDOW_SHOWN);
+    var window = sdl.SDL_CreateWindow("hello_sdl2", 1, 1, SCREEN_WIDTH, SCREEN_HEIGHT, sdl.SDL_WINDOW_SHOWN);
     if (window == null) {
-        _ = c.printf(c"error initializing SDL: %s\n", sdl.SDL_GetError());
+        _ = c.printf("error initializing SDL: %s\n", sdl.SDL_GetError());
         return 1;
     }
 
